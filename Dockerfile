@@ -1,3 +1,5 @@
+#create image
+#docker build - < Dockerfile -t "python-website"   
 #create and run container
 #ocker run -d -p 5000:5000  -v /Users/jessica/Documents/GitHub:/usr/src --env PORT=5000 python-website
 
@@ -48,4 +50,6 @@ ENV FLASK_ENV=development
 
 ENV FLASK_APP=app.py
 
-ENTRYPOINT ["bash", "-c", "echo $PORT && cd jessica-personal-website && flask run --host 0.0.0.0 --port $PORT"]
+RUN cd jessica-personal-website && flask run --host 0.0.0.0 --port $PORT
+
+ENTRYPOINT ["bash", "-c"]
