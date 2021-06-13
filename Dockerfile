@@ -37,11 +37,9 @@ RUN \
 
 RUN \
     git clone https://github.com/jmanzion/jessica-personal-website.git
-RUN \
-    cd jessica-personal-website
 
 ENV FLASK_ENV=development
 
 ENV FLASK_APP=app.py
 
-ENTRYPOINT ["flask", "run"]
+ENTRYPOINT ["bash", "-c", "cd jessica-personal-website && flask run"]
