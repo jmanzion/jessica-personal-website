@@ -1,7 +1,7 @@
 #create image
 #docker build - < Dockerfile -t "python-website"   
 #create and run container
-#ocker run -d -p 5000:5000  -v /Users/jessica/Documents/GitHub:/usr/src --env PORT=5000 python-website
+#ocker run -p 5000:5000  -v /Users/jessica/Documents/GitHub:/usr/src --env PORT=5000 python-website
 
 # See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.177.0/containers/python-3/.devcontainer/base.Dockerfile
 
@@ -48,8 +48,7 @@ RUN \
 
 ENV FLASK_ENV=development
 
-ENV FLASK_APP=app.py
+ENV FLASK_APP=jessica-personal-website/app 
 
-RUN cd jessica-personal-website && flask run --host 0.0.0.0 --port $PORT
+CMD flask run --host 0.0.0.0 --port $PORT
 
-ENTRYPOINT ["bash", "-c"]
