@@ -1,0 +1,48 @@
+#create image
+#docker build -t "python-website" .
+#create and run container
+#docker run -p 5000:5000  -v /Users/jessica/Documents/GitHub:/usr/src --env PORT=5000 python-website
+
+# [Choice] Python version: 3, 3.9, 3.8, 3.7, 3.6
+ARG VARIANT="3.9"
+
+FROM postgres
+ENV POSTGRES_PASSWORD datascience
+ENV POSTGRES_DB Faces
+ENV POSTGRES_PORT 5432
+ENV POSTGRES_HOST localhost
+COPY Faces.sql /docker-entrypoint-initdb.d/
+
+# See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.177.0/containers/python-3/.devcontainer/base.Dockerfile
+
+FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
+WORKDIR /usr/src
+
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+EXPOSE 5000
+
+RUN \
+    pip install jupyter\
+    pip install scipy\
+    pip install numpy\
+    pip install matplotlib\
+    pip install sklearn\
+    pip install networkx\
+    pip install pandas\
+    pip install scikit-image\
+    pip install flask\
+    pip install psycopg2
+    
+RUN \
+    apt-get -y install git
+
+CMD git clone https://github.com/jmanzion/jessica-personal-website.git
+
+ENV FLASK_ENV=development
+ENV FLASK_APP=jessica-personal-website/app 
+#ENV FLASK_APP=app.py
+#ENV FLASK_RUN_HOST=0.0.0.0
+
+CMD flask run --host 0.0.0.0 --port $PORT
+
