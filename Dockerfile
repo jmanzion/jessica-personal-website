@@ -10,7 +10,8 @@ WORKDIR /app
 CMD git clone https://github.com/jmanzion/jessica-personal-website.git
 
 RUN pip install -r requirements.txt\
-    pip install psycopg2
+    pip install psycopg2\
+    pip install python-dotenv
 
 COPY . /app
 

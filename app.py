@@ -1,8 +1,11 @@
 from flask import Flask
 #from flask.ext.sqlalchemy import SQLAlchemy
 import psycopg2
+import os
 
 app = Flask(__name__)
+#app.config.from_object(os.environ['APP_SETTINGS'])
+
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/Faces'
 #db = SQLAlchemy(app)
 
@@ -37,7 +40,7 @@ def index():
     d = ''
     for i in data:
         for j in i:
-            d += str(j)
+            d += str(j) + '\n'
     return d
 # Close database connection
 cursor.close()
@@ -54,6 +57,7 @@ conn.close() """
 
 #make server reload with every code change
 if __name__ == '__main__':
-    app.debug = True
-    app.run()
+    #app.debug = True
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
 
