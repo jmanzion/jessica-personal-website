@@ -1,13 +1,13 @@
 from flask import Flask
-#from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 import psycopg2
 import os
 
 app = Flask(__name__)
 #app.config.from_object(os.environ['APP_SETTINGS'])
 
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/Faces'
-#db = SQLAlchemy(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or 'postgresql://localhost/Faces'
+db = SQLAlchemy(app)
 
 #establishing the connection
 conn = psycopg2.connect(
