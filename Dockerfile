@@ -11,7 +11,8 @@ CMD git clone https://github.com/jmanzion/jessica-personal-website.git
 
 RUN pip install -r requirements.txt\
     pip install psycopg2\
-    pip install python-dotenv
+    pip install python-dotenv\
+    pip install gunicorn
 
 COPY . /app
 
