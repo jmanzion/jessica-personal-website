@@ -1,20 +1,22 @@
-FROM python:3.9
+#killall Docker && open /Applications/Docker.app
 
-RUN apt-get update &&\
-    apt-get install -y git
+ARG VARIANT="3.9"
+FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
-COPY ./requirements.txt /app/requirements.txt
+#RUN apt-get update
 
-COPY . /app
+#COPY ./requirements.txt /app/requirements.txt
 
-WORKDIR /app
+COPY server /jessica-personal-website/server
+
+WORKDIR /jessica-personal-website
 
 #CMD git clone https://github.com/jmanzion/jessica-personal-website.git
 
-RUN pip install -r requirements.txt\
-    pip install psycopg2\
-    pip install python-dotenv\
-    pip install gunicorn\
-    pip install flask\
-    pip install flask_sqlalchemy
+RUN \
+    #pip install -r requirements.txt\
+    pip install psycopg2-binary\
+    pip install flask
+
+CMD python3 server/app.py --host 0.0.0.0 --port $PORT
 

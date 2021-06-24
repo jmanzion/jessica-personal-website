@@ -1,27 +1,27 @@
 version: '3'
 services: 
     web:    
-        restart: always    
+        restart: always   
         build: .
         command: python app.py
         ports:      
             - 5000:5000
         environment: 
             - FLASK_APP=app.py
-            - FLASK_ENV=development
+            #- FLASK_ENV=development
         env_file:
             - env.list  
-        volumes:      
-            - .:/app
+        #volumes:      
+        #    - .:/app
         depends_on:  
             - db
     db:    
         restart: always    
         image: postgres:10    
-        environment:      
-            - POSTGRES_USER=admin #${POSTGRES_USER}      
-            - POSTGRES_PASSWORD=datascience #${POSTGRES_PASSWORD}      
-            - POSTGRES_DB=Faces #${POSTGRES_DB} 
+        #environment:      
+        #    - POSTGRES_USER=admin #${POSTGRES_USER}       
+        #    - POSTGRES_PASSWORD=datascience #${POSTGRES_PASSWORD}      
+        #    - POSTGRES_DB=Faces #${POSTGRES_DB} 
         volumes:
             - db-data:/var/lib/postgresql/data      
         ports:      
