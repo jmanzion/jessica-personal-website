@@ -1,11 +1,12 @@
-from flask import Flask,request,jsonify
+from flask import Flask,request,jsonify,send_from_directory
 import psycopg2
 import os
+import colorCompression
 
 app = Flask(__name__, static_folder=os.path.abspath('images/'))
 
 db = os.environ.get('DATABASE_URL') 
-#or 'postgresql://postgres:datascience@172.17.0.2:5432/Faces'
+#--env DATABASE_URL=postgres://igvoxqwfepyoxl:98a6e08ee66a1b384c3df5673570ae76cca60b5f5560d3fdaaa0076b0eca4c10@ec2-52-4-111-46.compute-1.amazonaws.com:5432/ddhqnu1qusofm8
 schema = "Faces.sql"
 conn = psycopg2.connect(db)
 
@@ -34,8 +35,20 @@ def page_not_found(e):
     return "<h1>404</h1><p>The resource could not be found.</p>", 404
 
 @app.route("/",methods=['GET'])
+@app.route("/home")
+@app.route("/faces")
+@app.route("/color-compression")
 def index():
-    return "This is the home page. Go to /faces"
+    return angular_app('index.html')
+
+@app.route('/<path:name>')
+def angular_app(name):
+    return send_from_directory(os.path.join(os.getcwd(), os.path.abspath('/jessica-personal-website/client-compiled/')), name.lstrip('/'))
+
+@app.route("/_/api/ColorCompression",methods=["GET"])
+def execute_color_compression():
+    return colorCompression.execute_colorCompression()
+    #return 'hello'
 
 @app.route("/faces/all",methods=['GET'])
 def list_faces():
@@ -62,7 +75,7 @@ def get_face():
     if name:
         query += ' name= "' + name + '"'
     if not (id or name):
-        return page_not_found(404)
+        return angular_app('index.html')
     
     query = query + ';'
 

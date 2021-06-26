@@ -1,3 +1,4 @@
+import { ThisReceiver, ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -13,6 +14,10 @@ export class HomeComponent implements OnInit {
 
   goFaces(){
     this.router.navigate(['/faces']);
+  }
+
+  goToColorCompression(){
+    this.router.navigate(['/color-compression'])
   }
 
   ngOnInit(): void {

@@ -5,13 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { FacesComponent } from './faces/faces.component';
+import { ColorCompressionComponent } from './color-compression/color-compression.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    FacesComponent
+    FacesComponent,
+    ColorCompressionComponent
   ],
   imports: [
     BrowserModule,
