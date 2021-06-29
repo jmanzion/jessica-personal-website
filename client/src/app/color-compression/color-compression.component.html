@@ -1,9 +1,94 @@
-<h1 style="text-align: center;">Color Compression</h1>
-<div style="margin-left: 10%;">
-    <div style="width: 50%;">
-        <img style="width: 90%" src="/assets/fox.bmp">
-        <h3 style="text-align: center;">Original Image</h3>
-    </div>
-</div>
-<button class="center-button">Click here to show fox image</button>
-<img src="/_/api/ColorCompression">
+<h1 class="mat-display-1" style="text-align: center;margin:auto;">Color Compression</h1>
+
+<mat-card>
+    <mat-grid-list cols="5" rowHeight="100px">
+        <mat-grid-tile colspan="5" rowspan="1">
+            <mat-card-title style="text-align: center;">
+                What will happen to the fox?
+            </mat-card-title>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="3">
+            <div>
+                <img src="/assets/fox.bmp">
+                <h3 style="text-align: center;">Original Image</h3>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+            <label for="num_colors" class="mat-h3">How many colors do you want to use?</label>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="2" rowspan="3">
+            <div *ngIf="showImage;else elseBlock">
+                <img src="/_/api/ColorCompression?num_colors={{numColors}}&compressImage={{compressImage}}">
+                <h3 style="text-align: center;">New Image with {{numColors}} colors</h3>
+            </div>
+            <ng-template #elseBlock>
+                <div *ngIf="spinner; else elseBlock2">
+                    <mat-spinner [mode]="progressMode"></mat-spinner>
+                </div>
+                <ng-template #elseBlock2>
+                    <div>
+                        <img src="/assets/imagePlaceholder.png">
+                        <h3 style="text-align: center;">New Image</h3>
+                    </div>
+                </ng-template>
+            </ng-template>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+            <mat-slider matTooltip="Move the slider to select a number from 1-15 to be the number of colors used in the new image." thumbLabel step="1" min="0" max="15" tickInterval="3" aria-label="units" name="num_colors" [(ngModel)]="numColors" (ngModelChange)="resetShowImage($event)">
+            </mat-slider>
+            <p matBadge="?" matBadgeSize="small"></p>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+            <button mat-raised-button color="primary" (click)="viewImage()" [(ngModel)]="compressImage" name="/client/src/assets/fox.bmp">COMPRESS IMAGE</button>
+        </mat-grid-tile>
+    </mat-grid-list>
+</mat-card>
+
+<mat-card>
+    <mat-grid-list cols="5" rowHeight="100px">
+        <mat-grid-tile colspan="5" rowspan="1">
+            <mat-card-title style="text-align: center;">
+                Now try your own image!
+            </mat-card-title>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="3">
+            <div>
+                <img src="/_/api/upload?filename={{filename}}">
+                <input type="file" [(ngModel)]="filename" name="file">
+                <input type="submit">
+                <h3 style="text-align: center;">Original Image</h3>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+            <p for="num_colors" class="mat-h3">How many colors do you want to use?</p>
+        </mat-grid-tile>
+        <mat-divider></mat-divider>
+        <mat-grid-tile colspan="2" rowspan="3">
+            <div *ngIf="showImage2;else elseBlock">
+                <img src="/_/api/ColorCompression?num_colors={{numColors2}}&compressImage={{filename}}">
+                <h3 style="text-align: center;">New Image with {{numColors2}} colors</h3>
+            </div>
+            <ng-template #elseBlock>
+                <div *ngIf="spinner; else elseBlock2">
+                    <mat-spinner [mode]="progressMode"></mat-spinner>
+                </div>
+                <ng-template #elseBlock2>
+                    <div>
+                        <img src="/assets/imagePlaceholder.png">
+                        <h3 style="text-align: center;">New Image</h3>
+                    </div>
+                </ng-template>
+            </ng-template>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+
+            <mat-slider matTooltip="Move the slider to select a number from 1-15 to be the number of colors used in the new image." thumbLabel step="1" min="0" max="15" tickInterval="3" aria-label="units" name="num_colors" [(ngModel)]="numColors2" (ngModelChange)="resetShowImage2($event)">
+            </mat-slider>
+            <p matBadge="?" matBadgeSize="small"></p>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+            <button mat-raised-button color="primary" (click)="viewImage2()">COMPRESS IMAGE</button>
+        </mat-grid-tile>
+    </mat-grid-list>
+</mat-card>

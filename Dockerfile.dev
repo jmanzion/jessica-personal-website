@@ -28,5 +28,5 @@ WORKDIR /jessica-personal-website
 
 #CMD git clone https://github.com/jmanzion/jessica-personal-website.git
 
-CMD python3 server/app.py --host 0.0.0.0 --port $PORT
+CMD python3 server/app.py --host 0.0.0.0 --port $PORT --dev True --dev-angular-app $ANGULAR_DEV_APP
 

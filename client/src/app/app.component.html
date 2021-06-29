@@ -1,7 +1,29 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center;border-bottom:1px solid brown" class="content">
-    <h1>
-        Welcome to {{title}}!
-    </h1>
-</div>
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        <h1 class="mat-h1" style="margin-right: 10px;">Jessica's Website</h1>
+        <span class="menu-spacer"></span>
+        <div>
+            <a mat-button [routerLink]="'/'"> Home </a>
+            <a mat-button [routerLink]="'/color-compression'"> Color Compression </a>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav>
+        <mat-nav-list>
+
+            <a mat-list-item [routerLink]="'/'"> Home </a>
+            <a mat-list-item [routerLink]="'/color-compression'"> Color Compression </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div style="height: 88vh;">
+
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,14 +1,84 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '~@angular/material' as mat;
+// Plus imports for other components in your app.
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$client-primary: mat.define-palette(mat.$teal-palette);
+$client-accent: mat.define-palette(mat.$cyan-palette, 200, 100, 500, 50);
+// The warn palette is optional (defaults to red).
+$client-warn: mat.define-palette(mat.$red-palette);
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$client-theme: mat.define-light-theme(( color: ( primary: $client-primary, accent: $client-accent, warn: $client-warn, )));
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($client-theme);
+
 /* You can add global styles to this file, and also import other style files */
 
-.center-button {
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.center {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 30%;
+    margin: auto 0 auto 0;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+.large {
     font-size: 24px;
-    background-color: midnightblue;
-    color: azure;
-    margin-top: 10px;
-    border-radius: 20%;
-    padding: 5px;
+}
+
+
+/* Container needed to position the button. Adjust the width as needed */
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+
+/* Make the image responsive */
+
+.container img {
+    width: 100%;
+    height: auto;
+}
+
+
+/* Style the button and place it in the middle of the container/image */
+
+.container .btn {
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    //background-color: #555;
+    //color: white;
+    //font-size: 16px;
+    //padding: 12px 24px;
+    //border: none;
+    cursor: pointer;
+    //border-radius: 5px;
+}
+
+.container .btn:hover {
+    background-color: cyan;
 }

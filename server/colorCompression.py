@@ -112,11 +112,11 @@ def image(new_img):
     return send_file(file_object, mimetype='image/jpeg')
     
 
-def execute_colorCompression():
+def execute_colorCompression(num_colors=5,compressImage='/client/src/assets/fox.bmp'):
     #switch the value of k here to choose number of clusters
-    k=12
+    k=int(num_colors)
     #change the integer between 0, 1, or 2 for images in get_image to select which image to compress
-    x,m,n,img = get_image('images/fox.bmp')
+    x,m,n,img = get_image(compressImage)
     #uncomment/comment between init_centers (random initialization) and init_centers_poorly (poor initialization)
     c = init_centers(k,x)
     #c = init_centers_poorly(k,x)
