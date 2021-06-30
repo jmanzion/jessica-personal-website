@@ -54,9 +54,8 @@
         </mat-grid-tile>
         <mat-grid-tile colspan="2" rowspan="3">
             <div>
-                <img src="/_/api/upload?filename={{filename}}">
-                <input type="file" [(ngModel)]="filename" name="file">
-                <input type="submit">
+                <img id="uploadedFile">
+                <input type="file" name="file" (change)='uploadImage($event)'>
                 <h3 style="text-align: center;">Original Image</h3>
             </div>
         </mat-grid-tile>
@@ -66,7 +65,7 @@
         <mat-divider></mat-divider>
         <mat-grid-tile colspan="2" rowspan="3">
             <div *ngIf="showImage2;else elseBlock">
-                <img src="/_/api/ColorCompression?num_colors={{numColors2}}&compressImage={{filename}}">
+                <img id="compressedImage">
                 <h3 style="text-align: center;">New Image with {{numColors2}} colors</h3>
             </div>
             <ng-template #elseBlock>

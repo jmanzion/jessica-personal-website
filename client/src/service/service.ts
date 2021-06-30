@@ -20,7 +20,7 @@ export class Service {
           });
         }
         if (requestPayload) {
-          req.setRequestHeader('Content-Type', 'application/json');
+          //req.setRequestHeader('Content-Type', 'multipart/form-data');
           req.send(JSON.stringify(requestPayload));
         } else {
           req.send();

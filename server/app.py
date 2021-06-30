@@ -1,9 +1,12 @@
 from flask import Flask,request,jsonify,send_from_directory,Response,flash,redirect
+from flask.helpers import url_for
 import psycopg2
 import os
 import colorCompression
 import requests
 import argparse
+from PIL import Image
+import urllib.request
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--host', help='The host address',
@@ -71,29 +74,17 @@ def angular_app(name):
     else:
         return send_from_directory(os.path.join(os.getcwd(), os.path.abspath('/jessica-personal-website/client-compiled/')), name.lstrip('/'))
 
-@app.route("/_/api/ColorCompression",methods=['GET'])
+@app.route("/_/api/ColorCompression",methods=['GET','POST'])
 def execute_color_compression():
     query_params = request.args
     num_colors = query_params.get('num_colors')
-    compressImage = query_params.get('compressImage')
-    return colorCompression.execute_colorCompression(num_colors=num_colors,compressImage=compressImage)
-
-@app.route('/_/api/upload',methods=['GET'])
-def upload():
-    query_params = request.args
-    filename = query_params.get('filename')
-    file = request.files['file']
-    return print(filename)
-
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-	
-@app.route('/uploader', methods = ['GET', 'POST'])
-def upload_file():
-   if request.method == 'POST':
-      f = request.files['file']
-      return f.save(f.filename)
+    if request.method == 'GET':
+        compressImage = query_params.get('compressImage')
+        return colorCompression.execute_colorCompression(num_colors=num_colors,compressImage=compressImage)
+    else:
+        filename = request.files.get('file')
+        #filename = query_params.get('compressImage')
+        return colorCompression.execute_colorCompression(num_colors=num_colors,compressImage=filename)
 
 @app.route("/faces/all",methods=['GET'])
 def list_faces():

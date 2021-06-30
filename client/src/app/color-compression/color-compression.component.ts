@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
+import { ColorCompressionService } from 'src/service/ColorCompression/color-compression.service';
 
 
 @Component({
@@ -15,24 +16,36 @@ import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
     numColors2 : number = 5;
     compressImage : string = 'images/fox.bmp';
     spinner : boolean = false;
-    filename: string = '';
+    files: any[] = [];
 
     progressMode: ProgressSpinnerMode = 'determinate';
     progressValue = 0;
 
+    constructor(private colorCompressionService: ColorCompressionService){ }
+
+    uploadImage(event:any){
+      this.files = event.target.files;
+      var image = document.getElementById('uploadedFile') as any;
+      image.src = URL.createObjectURL(this.files[0]);
+      this.colorCompressionService.compress(this.files[0],this.numColors).then((result)=> {
+        var image = document.getElementById('compressedImage') as any;
+        image.src = result;
+      });
+    }
+
     loading(){
       this.spinner = true;
-      this.progressMode = 'indeterminate'
+      this.progressMode = 'indeterminate';
     }
 
     viewImage(){
       this.spinner = false;
-      this.progressMode = 'determinate'
+      this.progressMode = 'determinate';
       this.showImage = true;
     }
     viewImage2(){
       this.spinner = false;
-      this.progressMode = 'determinate'
+      this.progressMode = 'determinate';
       this.showImage2 = true;
     }
     

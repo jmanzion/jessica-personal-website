@@ -20,6 +20,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatBadgeModule} from '@angular/material/badge';
+import { ColorCompressionModule } from 'src/service/ColorCompression/color-compression.module';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatToolbarModule,
     MatListModule,
     MatTooltipModule,
-    MatBadgeModule
+    MatBadgeModule,
+    ColorCompressionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
