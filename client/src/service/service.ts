@@ -1,11 +1,11 @@
 export class Service {
-    sendRequest(apiEndpoint: string, methodType: string, requestPayload: Object | null = null): Promise<Object> {
+    sendRequest(apiEndpoint: string, methodType: string, requestPayload: FormData | null): Promise<Object> {
       return new Promise((resolve, reject) => {
         let req = new XMLHttpRequest();
         req.open(methodType, apiEndpoint, true);
         req.onload = () => {
           if (req.status >= 200 && req.status < 300) {
-            resolve(JSON.parse(req.responseText));
+            resolve(req);
           } else {
             reject({
               status: req.status,
@@ -21,7 +21,7 @@ export class Service {
         }
         if (requestPayload) {
           //req.setRequestHeader('Content-Type', 'multipart/form-data');
-          req.send(JSON.stringify(requestPayload));
+          req.send(requestPayload);
         } else {
           req.send();
         };

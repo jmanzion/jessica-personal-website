@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { FacesComponent } from './faces/faces.component';
 import { ColorCompressionComponent } from './color-compression/color-compression.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatCardModule} from '@angular/material/card';
@@ -21,6 +21,9 @@ import {MatListModule} from '@angular/material/list';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatBadgeModule} from '@angular/material/badge';
 import { ColorCompressionModule } from 'src/service/ColorCompression/color-compression.module';
+import { ResumeComponent } from './resume/resume.component';
+import { ContactComponent } from './contact/contact.component';
+import { SiteInfoComponent } from './site-info/site-info.component';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { ColorCompressionModule } from 'src/service/ColorCompression/color-compr
     AppComponent,
     HomeComponent,
     FacesComponent,
-    ColorCompressionComponent
+    ColorCompressionComponent,
+    ResumeComponent,
+    ContactComponent,
+    SiteInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +53,8 @@ import { ColorCompressionModule } from 'src/service/ColorCompression/color-compr
     MatListModule,
     MatTooltipModule,
     MatBadgeModule,
-    ColorCompressionModule
+    ColorCompressionModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

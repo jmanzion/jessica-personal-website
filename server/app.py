@@ -1,12 +1,16 @@
-from flask import Flask,request,jsonify,send_from_directory,Response,flash,redirect
+from flask import Flask,request,jsonify,send_from_directory,Response,flash,redirect,send_file
 from flask.helpers import url_for
+from requests.models import encode_multipart_formdata
 import psycopg2
 import os
 import colorCompression
 import requests
 import argparse
+import sys
+import io
+from io import BytesIO
+import numpy as np
 from PIL import Image
-import urllib.request
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--host', help='The host address',
@@ -61,6 +65,9 @@ def page_not_found(e):
 @app.route("/home")
 @app.route("/faces")
 @app.route("/color-compression")
+@app.route("/site-info")
+@app.route("/contact")
+@app.route("/resume")
 def index():
     if args.dev:
         return _proxy()
@@ -82,9 +89,12 @@ def execute_color_compression():
         compressImage = query_params.get('compressImage')
         return colorCompression.execute_colorCompression(num_colors=num_colors,compressImage=compressImage)
     else:
-        filename = request.files.get('file')
-        #filename = query_params.get('compressImage')
-        return colorCompression.execute_colorCompression(num_colors=num_colors,compressImage=filename)
+        file = request.files.get('file')
+        filename = file.filename
+        print(request.files.get('file').filename, file=sys.stderr)
+        #file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        #os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        return colorCompression.execute_colorCompression(num_colors=num_colors,compressImage=file,encodeImage=True)
 
 @app.route("/faces/all",methods=['GET'])
 def list_faces():

@@ -27,10 +27,6 @@ import { ColorCompressionService } from 'src/service/ColorCompression/color-comp
       this.files = event.target.files;
       var image = document.getElementById('uploadedFile') as any;
       image.src = URL.createObjectURL(this.files[0]);
-      this.colorCompressionService.compress(this.files[0],this.numColors).then((result)=> {
-        var image = document.getElementById('compressedImage') as any;
-        image.src = result;
-      });
     }
 
     loading(){
@@ -47,6 +43,11 @@ import { ColorCompressionService } from 'src/service/ColorCompression/color-comp
       this.spinner = false;
       this.progressMode = 'determinate';
       this.showImage2 = true;
+      this.colorCompressionService.compress(this.files[0],this.numColors2).then((result : any)=> {
+        var image = document.getElementById('compressedImage') as any;
+        console.log(result);
+        image.src = 'data:image/jpeg;base64,' + result.responseText;
+      });
     }
     
     resetShowImage(e:number){

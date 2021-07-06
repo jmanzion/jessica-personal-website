@@ -1,3 +1,4 @@
+from flask.helpers import make_response
 import scipy.io as sio
 import numpy as np
 import matplotlib.pyplot as plt
@@ -9,6 +10,7 @@ from PIL import Image
 import io
 import os
 from flask import send_from_directory
+import base64
 
 images = ['football.bmp','GeorgiaTech.bmp','./images/fox.bmp']
 
@@ -93,7 +95,7 @@ def clustered_img(c,img,labels):
     #plt.show()
     return new_img
 
-def image(new_img):
+def image(new_img,encodeImage=False):
     # my numpy array 
     #arr = np.array(new_img)
 
@@ -109,10 +111,16 @@ def image(new_img):
     # move to beginning of file so `send_file()` it will read from start    
     file_object.seek(0)
 
+    if encodeImage:
+        response = make_response(base64.b64encode(file_object.read()))
+        response.headers.set('Content-Type','image/jpeg')
+        response.headers.set('Content-Disposition','attachment',filename='image.jpeg')
+        return response
+
     return send_file(file_object, mimetype='image/jpeg')
     
 
-def execute_colorCompression(num_colors=5,compressImage='/client/src/assets/fox.bmp'):
+def execute_colorCompression(num_colors=5,compressImage='/client/src/assets/fox.bmp', encodeImage=False):
     #switch the value of k here to choose number of clusters
     k=int(num_colors)
     #change the integer between 0, 1, or 2 for images in get_image to select which image to compress
@@ -124,7 +132,7 @@ def execute_colorCompression(num_colors=5,compressImage='/client/src/assets/fox.
     labels, c = clustering(c,x,m,k)
     #toc = time.time()
     new_img = clustered_img(c,img,labels)
-    return image(new_img)
+    return image(new_img,encodeImage)
 
 
     #print('Elapsed time is %f seconds \n' % float(toc - tic))
