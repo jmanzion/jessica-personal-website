@@ -45,6 +45,23 @@ body {
     text-align: center;
 }
 
+.img-cover1 {
+    /* The image used */
+    background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/assets/cliff_view.jpg");
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.text {
+    margin: 3% 10% 5% 10%;
+    // margin-top: 3%;
+    color: #000000;
+}
+
 .centered {
     position: absolute;
     top: 50%;
@@ -63,11 +80,12 @@ body {
 }
 
 .left {
-    flex: 40%;
+    flex: 30%;
+    margin-top: 5%;
 }
 
 .right {
-    flex: 60%;
+    flex: 70%;
 }
 
 body {
