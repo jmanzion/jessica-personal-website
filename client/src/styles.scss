@@ -28,6 +28,48 @@ body {
     height: 100%;
 }
 
+.mat-expansion-panel-header-title {
+    //font-weight: bold;
+    font-size: 20px;
+}
+
+.img-cover {
+    /* The image used */
+    background-image: url("/assets/mount mitchell.jpg");
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 20px;
+}
+
+.mat-toolbar {
+    font-size: 20px;
+}
+
+.row {
+    display: flex;
+}
+
+.left {
+    flex: 40%;
+}
+
+.right {
+    flex: 60%;
+}
+
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -43,42 +85,4 @@ body {
 
 .large {
     font-size: 24px;
-}
-
-
-/* Container needed to position the button. Adjust the width as needed */
-
-.container {
-    position: relative;
-    width: 100%;
-}
-
-
-/* Make the image responsive */
-
-.container img {
-    width: 100%;
-    height: auto;
-}
-
-
-/* Style the button and place it in the middle of the container/image */
-
-.container .btn {
-    position: absolute;
-    top: 50%;
-    left: 75%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    //background-color: #555;
-    //color: white;
-    //font-size: 16px;
-    //padding: 12px 24px;
-    //border: none;
-    cursor: pointer;
-    //border-radius: 5px;
-}
-
-.container .btn:hover {
-    background-color: cyan;
 }

@@ -24,7 +24,11 @@ import { ColorCompressionModule } from 'src/service/ColorCompression/color-compr
 import { ResumeComponent } from './resume/resume.component';
 import { ContactComponent } from './contact/contact.component';
 import { SiteInfoComponent } from './site-info/site-info.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatInputModule} from '@angular/material/input';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -54,7 +58,13 @@ import { SiteInfoComponent } from './site-info/site-info.component';
     MatTooltipModule,
     MatBadgeModule,
     ColorCompressionModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatMenuModule,
+    MatInputModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

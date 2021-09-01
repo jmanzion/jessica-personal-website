@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup} from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators, RequiredValidator} from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact',
@@ -8,19 +9,16 @@ import { FormBuilder, FormGroup} from '@angular/forms';
   ]
 })
 export class ContactComponent implements OnInit {
+  contactForm = new FormGroup({
+    subject: new FormControl(''),
+    message: new FormControl('')
+  });
 
-  FormData: FormGroup;
-
-  constructor(private builder:FormBuilder) { 
-    ngOnInit() {
-      this.FormData = this.builder.group({
-      Fullname: new FormControl('', [Validators.required]),
-      Email: new FormControl('', [Validators.compose([Validators.required, Validators.email])]),
-      Comment: new FormControl('', [Validators.required])
-      })
+  constructor() {} 
+  ngOnInit() { }
+  processForm(contactForm: FormGroup) {
+    var subject = this.contactForm.controls['subject'].value;
+    var message = this.contactForm.controls['message'].value;
+    window.open("mailto:jessmanzione101@gmail.com?subject=" + subject + "&body=" + message,"_blank");
   }
-
-  ngOnInit(): void {
-  }
-
 }

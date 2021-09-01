@@ -1,0 +1,25 @@
+<mat-card style="margin: 5% 30%;text-align: center;">
+    <mat-card-header style="display: inline-block;">
+        <mat-card-title>Contact Me!</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="form-group" [formGroup]="contactForm">
+            <p>
+                <mat-form-field style="width:100%;" appearance="fill">
+                    <mat-label>Email Subject</mat-label>
+                    <input matInput class="form-control" placeholder="Email Subject" formControlName="subject">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field style="width:100%;" appearance="fill">
+                    <mat-label>Your Message</mat-label>
+                    <textarea matInput class="form-control" placeholder="Your Message" formControlName="message"></textarea>
+                </mat-form-field>
+            </p>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="processForm(contactForm.value)" type="submit">SEND</button>
+    </mat-card-actions>
+
+</mat-card>
