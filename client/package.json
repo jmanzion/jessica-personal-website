@@ -19,6 +19,11 @@
     "@angular/platform-browser": "~12.0.5",
     "@angular/platform-browser-dynamic": "~12.0.5",
     "@angular/router": "~12.0.5",
+    "@types/d3-tip": "^3.5.5",
+    "colorbrewer": "^1.5.1",
+    "d3-geo-projection": "^4.0.0",
+    "d3-legend": "^1.0.0",
+    "d3-tip": "^0.9.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"
@@ -27,6 +32,8 @@
     "@angular-devkit/build-angular": "~12.0.5",
     "@angular/cli": "~12.0.5",
     "@angular/compiler-cli": "~12.0.5",
+    "@types/colorbrewer": "^1.0.29",
+    "@types/d3": "^7.1.0",
     "@types/node": "^12.11.1",
     "typescript": "~4.2.3"
   }

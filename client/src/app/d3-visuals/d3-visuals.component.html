@@ -1,0 +1,65 @@
+<meta charset="utf-8">
+
+<head>
+    <title>D3 Visualizations</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>D3 Visualizations</mat-card-title>
+            <mat-card-subtitle>View various types of D3 Visualizations created based on board games and average ratings below by selecting a type to expand.</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <div style="height:40px"></div>
+            <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Choropleth Map
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Average Rating of Board Games Across the World
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>The Choropleth map shows the average rating per country using a color quantile scale based on the board game selected in the dropdown. Hover the mouse over the country to see additional info. If the country does not have any data,
+                        then it is gray.</p>
+                    <label style="margin-left: 10px;">Select Board Game: <select id="gameDropdown"></select></label>
+
+                    <div id="choropleth"></div>
+                </mat-expansion-panel>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Force-Directed Graph Layout
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Demonstrates the similarity between board games based on categories and game mechanics.
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p><strong>Edges (similarity):</strong> The edge value is the total weighted similarity index. If the board games (nodes) are similar, then the edge is gray, thick, and solid. If they are not similar, then the edge is green, thin, and
+                        dashed.
+                    </p>
+                    <p><strong>Nodes (board games):</strong> Radius and color gradient of each node is based on degree of the node. Darker color and larger radius mean higher degree.</p>
+                    <p>Note: You can pin the nodes by clicking and dragging. The color of the node will change to red when pinned. To unpin, double click the node.</p>
+                    <div id="node"></div>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Line Charts
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Four lines charts based on average ratings for board games.
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <div id="container" class="svg-conatiner"></div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-card-content>
+    </mat-card>
+</body>

@@ -29,6 +29,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatInputModule} from '@angular/material/input';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { D3VisualsComponent } from './d3-visuals/d3-visuals.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     ColorCompressionComponent,
     ResumeComponent,
     ContactComponent,
-    SiteInfoComponent
+    SiteInfoComponent,
+    D3VisualsComponent
   ],
   imports: [
     BrowserModule,

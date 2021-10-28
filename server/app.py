@@ -68,13 +68,14 @@ def page_not_found(e):
 @app.route("/site-info")
 @app.route("/contact")
 @app.route("/resume")
+@app.route("/d3-visuals")
 def index():
     if args.dev:
         return _proxy()
     else:
         return angular_app('index.html')
 
-@app.route('/<path:name>')
+@app.route('/<path:name>',methods=['GET','POST','PUT'])
 def angular_app(name):
     if args.dev:
         return _proxy()

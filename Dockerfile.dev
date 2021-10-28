@@ -3,7 +3,15 @@
 ARG VARIANT="3.9"
 FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
-#RUN apt-get update
+WORKDIR /jessica-personal-website
+
+#RUN apt-get update 
+
+#RUN apt-get install -y curl \
+#  && curl -sL https://deb.nodesource.com/setup_12.x | bash - \
+#  && apt-get install -y nodejs \
+#  && curl -L https://www.npmjs.com/install.sh | sh
+
 
 #COPY ./requirements.txt /app/requirements.txt
 
@@ -23,8 +31,6 @@ COPY server /jessica-personal-website/server
 COPY client-compiled /jessica-personal-website/client-compiled
 
 COPY images /jessica-personal-website/images
-
-WORKDIR /jessica-personal-website
 
 #CMD git clone https://github.com/jmanzion/jessica-personal-website.git
 
