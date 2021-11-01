@@ -30,6 +30,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatInputModule} from '@angular/material/input';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { D3VisualsComponent } from './d3-visuals/d3-visuals.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { D3VisualsComponent } from './d3-visuals/d3-visuals.component';
     ResumeComponent,
     ContactComponent,
     SiteInfoComponent,
-    D3VisualsComponent
+    D3VisualsComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,

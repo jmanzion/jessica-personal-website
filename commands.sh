@@ -15,5 +15,5 @@ docker build -t jessica-personal-website .
 #deploy to heroku
 heroku login
 heroku container:login
-heroku container:push web
+heroku container:push web --app jessicamanzione 
 heroku container:release web

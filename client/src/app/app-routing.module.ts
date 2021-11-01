@@ -5,6 +5,7 @@ import { ContactComponent } from './contact/contact.component';
 import { D3VisualsComponent } from './d3-visuals/d3-visuals.component';
 import { FacesComponent } from './faces/faces.component';
 import { HomeComponent } from './home/home.component';
+import { ProjectsComponent } from './projects/projects.component';
 import { ResumeComponent } from './resume/resume.component';
 import { SiteInfoComponent } from './site-info/site-info.component';
 
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'resume', component: ResumeComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'site-info', component: SiteInfoComponent},
-  {path: 'd3-visuals', component: D3VisualsComponent}
+  {path: 'd3-visuals', component: D3VisualsComponent},
+  {path: 'projects', component: ProjectsComponent}
   //{path: "*", component: AppComponent}
 ]
 
