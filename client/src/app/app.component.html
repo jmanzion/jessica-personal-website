@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar [ngClass]="{'img-cover' : router.url == '/home'}">
     <mat-toolbar-row>
         <!--
         <button mat-icon-button (click)="sidenav.toggle()">
@@ -19,6 +19,7 @@
             <button mat-button [matMenuTriggerFor]="belowMenu">Projects</button>
             <mat-menu #belowMenu="matMenu" yPosition="below">
                 <button mat-menu-item [routerLink]="'/projects'">View All</button>
+                <!-- <button mat-menu-item [routerLink]="'/this-website'">This Website</button> -->
                 <button mat-menu-item [routerLink]="'/color-compression'">Color Compression</button>
                 <button mat-menu-item [routerLink]="'/d3-visuals'">D3 Visualizations</button>
             </mat-menu>

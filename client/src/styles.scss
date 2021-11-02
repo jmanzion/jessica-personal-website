@@ -1,148 +1,191 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@use '~@angular/material' as mat;
-// Plus imports for other components in your app.
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat.core();
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$client-primary: mat.define-palette(mat.$teal-palette);
-$client-accent: mat.define-palette(mat.$cyan-palette, 200, 100, 500, 50);
-// The warn palette is optional (defaults to red).
-$client-warn: mat.define-palette(mat.$red-palette);
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$client-theme: mat.define-light-theme(( color: ( primary: $client-primary, accent: $client-accent, warn: $client-warn, )));
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($client-theme);
-
-/* You can add global styles to this file, and also import other style files */
-
-html,
-body {
-    height: 100%;
-}
-
-.mat-expansion-panel-header-title {
-    //font-weight: bold;
-    font-size: 20px;
-}
-
-.img-cover {
-    /* The image used */
-    background-image: url("/assets/mount mitchell.jpg");
-    /* Full height */
-    height: 95%;
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    text-align: center;
-    opacity: 75%;
-}
-
-.img-cover1 {
-    /* The image used */
-    background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/assets/cliff_view.jpg");
-    /* Full height */
-    height: 100%;
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.text {
-    margin: 3% 10% 5% 10%;
-    // margin-top: 3%;
-    color: #000000;
-}
-
-.centered {
-    position: absolute;
-    top: 50%;
-    left: 70%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 20px;
-}
-
-.mat-toolbar {
-    font-size: 20px;
-}
-
-.row {
-    display: flex;
-}
-
-.left {
-    flex: 30%;
-    margin-top: 5%;
-}
-
-.right {
-    flex: 70%;
-}
-
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-.center {
-    display: block;
-    margin: auto 0 auto 0;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
-}
-
-.large {
-    font-size: 24px;
-}
-
-path.link {
-    fill: none;
-    stroke: #666;
-    stroke-width: 1.5px;
-}
-
-circle {
-    fill: #ccc;
-    stroke: #fff;
-    stroke: black;
-    stroke-width: 1.5px;
-}
-
-text {
-    fill: #000;
-    font: 10px sans-serif;
-    pointer-events: none;
-}
-
-.axis text {
-    fill: #2b2929;
-    font-family: Georgia;
-    font-size: 120%;
-}
-
-.lines {
-    fill: none;
-    stroke: black;
-    stroke-width: 5;
-}
-
-mat-toolbar {
-    position: sticky;
-    position: -webkit-sticky;
-    /* For macOS/iOS Safari */
-    top: 0;
-    /* Sets the sticky toolbar to be on top */
-    z-index: 1000;
-    /* Ensure that your app's content doesn't overlap the toolbar */
-}
+        // Custom Theming for Angular Material
+        // For more information: https://material.angular.io/guide/theming
+        @use '~@angular/material' as mat;
+        // Plus imports for other components in your app.
+        // Include the common styles for Angular Material. We include this here so that you only
+        // have to load a single css file for Angular Material in your app.
+        // Be sure that you only ever include this mixin once!
+        @include mat.core();
+        // Define the palettes for your theme using the Material Design palettes available in palette.scss
+        // (imported above). For each palette, you can optionally specify a default, lighter, and darker
+        // hue. Available color palettes: https://material.io/design/color/
+        $client-primary: mat.define-palette(mat.$teal-palette);
+        $client-accent: mat.define-palette(mat.$cyan-palette, 200, 100, 500, 50);
+        // The warn palette is optional (defaults to red).
+        $client-warn: mat.define-palette(mat.$red-palette);
+        $typography-main: mat.define-typography-config($font-family: 'Open Sans'); // Create the theme object. A theme consists of configurations for individual
+        // theming systems such as "color" or "typography".
+        $client-theme: mat.define-light-theme(( color: ( primary: $client-primary, accent: $client-accent, warn: $client-warn), typography: $typography-main));
+        // Include theme styles for core and each component used in your app.
+        // Alternatively, you can import and @include the theme mixins for each component
+        // that you are using.
+        @include mat.all-component-themes($client-theme);
+        @include mat.core($typography-main);
+        /* You can add global styles to this file, and also import other style files */
+        
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+        
+        .mat-expansion-panel-header-title {
+            font-size: 20px;
+        }
+        
+        .img-cover {
+            /* The image used */
+            background-image: url("/assets/me.jpg");
+            /* Full height */
+            height: 100%;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            z-index: 10;
+        }
+        
+        .img-cover-resume {
+            background: linear-gradient(#0003, #0003), url(/assets/cliff_view.jpg);
+            height: 100%;
+            background-position: 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .text {
+            margin: 3% 10% 5% 10%;
+            // margin-top: 3%;
+            color: #000000;
+        }
+        
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 30%;
+            width: 500px;
+            transform: translate(-50%, -50%);
+            color: rgb(240, 242, 247);
+            text-align: center;
+            //background-color: rgb(255, 255, 255);
+            font-size: 24px;
+            line-height: 130%;
+            padding: 20px;
+            border-radius: 25px;
+            z-index: 100;
+        }
+        
+        .mat-toolbar h2 {
+            font-size: 20px;
+        }
+        
+        .mat-button {
+            font-size: 16px;
+        }
+        
+        .mat-toolbar-row {
+            background-image: linear-gradient(to right, rgba(126, 172, 219, 255), rgba(114, 159, 209, 255), rgba(114, 159, 209, 255));
+            color: white;
+            position: fixed;
+            /* For macOS/iOS Safari */
+            top: 0;
+            /* Sets the sticky toolbar to be on top */
+            z-index: 1000;
+        }
+        
+        .row {
+            display: flex;
+        }
+        
+        .left {
+            flex: 30%;
+            margin-top: 5%;
+        }
+        
+        .right {
+            flex: 70%;
+        }
+        
+        .center {
+            display: block;
+            margin: auto 0 auto 0;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+        
+        .large {
+            font-size: 24px;
+        }
+        
+        path.link {
+            fill: none;
+            stroke: #666;
+            stroke-width: 1.5px;
+        }
+        
+        circle {
+            fill: #ccc;
+            stroke: #fff;
+            stroke: black;
+            stroke-width: 1.5px;
+        }
+        
+        text {
+            fill: #000;
+            font: 10px;
+            pointer-events: none;
+        }
+        
+        .axis text {
+            fill: #2b2929;
+            font-family: Georgia;
+            font-size: 120%;
+        }
+        
+        .lines {
+            fill: none;
+            stroke: black;
+            stroke-width: 5;
+        }
+        
+        #section01 a span {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 24px;
+            height: 24px;
+            margin-left: -12px;
+            border-left: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            box-sizing: border-box;
+        }
+        
+        .ca3-scroll-down-arrow {
+            background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2hldnJvbl90aGluX2Rvd24iIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiBmaWxsPSJ3aGl0ZSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBhdGggZD0iTTE3LjQxOCw2LjEwOWMwLjI3Mi0wLjI2OCwwLjcwOS0wLjI2OCwwLjk3OSwwYzAuMjcsMC4yNjgsMC4yNzEsMC43MDEsMCwwLjk2OWwtNy45MDgsNy44M2MtMC4yNywwLjI2OC0wLjcwNywwLjI2OC0wLjk3OSwwbC03LjkwOC03LjgzYy0wLjI3LTAuMjY4LTAuMjctMC43MDEsMC0wLjk2OWMwLjI3MS0wLjI2OCwwLjcwOS0wLjI2OCwwLjk3OSwwTDEwLDEzLjI1TDE3LjQxOCw2LjEwOXoiLz48L3N2Zz4=);
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        
+        .ca3-scroll-down-link {
+            cursor: pointer;
+            height: 60px;
+            width: 80px;
+            margin: 0px 0 0 -40px;
+            line-height: 60px;
+            position: absolute;
+            left: 50%;
+            bottom: 0px;
+            color: #FFF;
+            text-align: center;
+            font-size: 70px;
+            z-index: 100;
+            text-decoration: none;
+            text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4);
+        }

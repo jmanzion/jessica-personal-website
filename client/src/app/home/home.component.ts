@@ -9,7 +9,11 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(public router: Router) { }
+  
+  scroll(id: HTMLElement) {
+    id.scrollIntoView({behavior: 'smooth'});
+  }
 
   goFaces(){
     this.router.navigate(['/faces']);

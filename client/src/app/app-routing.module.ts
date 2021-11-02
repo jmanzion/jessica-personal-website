@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'color-compression', component: ColorCompressionComponent},
   {path: 'resume', component: ResumeComponent},
   {path: 'contact', component: ContactComponent},
-  {path: 'site-info', component: SiteInfoComponent},
+  {path: 'this-website', component: SiteInfoComponent},
   {path: 'd3-visuals', component: D3VisualsComponent},
   {path: 'projects', component: ProjectsComponent}
   //{path: "*", component: AppComponent}
