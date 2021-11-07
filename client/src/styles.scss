@@ -29,15 +29,67 @@
             margin: 0;
         }
         
+        .mat-typography h1 {
+            font-size: 22px;
+            @media only screen and (max-device-width: 800px) {
+                font-size: 4vw;
+            }
+        }
+        
+        .title {
+            border-bottom: black solid 1px;
+            padding-bottom: 2%;
+            width: 100%;
+        }
+        
+        .header {
+            text-align: center;
+            margin: 40px auto;
+            width: 30%;
+        }
+        
+        .card-box {
+            width: 70%;
+            margin: auto;
+            padding-bottom: 50px;
+        }
+        
+        @media only screen and (max-device-width: 800px) {
+            .mat-typography h2,
+            .mat-typography h3,
+            .mat-card-title {
+                font-size: 3vw;
+                line-height: 130%;
+            }
+            .mat-typography p,
+            .mat-card-content,
+            .mat-h3,
+            .mat-raised-button {
+                font-size: 2vw;
+                line-height: 130%;
+            }
+            .mat-card-header .mat-card-title {
+                font-size: 4vw;
+            }
+            .mat-expansion-panel-header-description {
+                font-size: 2vw;
+            }
+        }
+        
         .mat-expansion-panel-header-title {
             font-size: 20px;
+            line-height: 130%;
+            @media only screen and (max-device-width: 800px) {
+                font-size: 3vw;
+            }
         }
         
         .img-cover {
             /* The image used */
-            background-image: url("/assets/me.jpg");
+            background-image: url("assets/rock_sitting.jpg");
             /* Full height */
             height: 100%;
+            width: 100%;
             /* Center and scale the image nicely */
             background-position: center;
             background-repeat: no-repeat;
@@ -45,7 +97,7 @@
             background-attachment: fixed;
             text-align: center;
             color: white;
-            font-weight: bold;
+            font-weight: 700;
             z-index: 10;
         }
         
@@ -55,6 +107,12 @@
             background-position: 50%;
             background-repeat: no-repeat;
             background-size: cover;
+        }
+        
+        .resume-header {
+            text-align: center;
+            margin-top: 3%;
+            color: white;
         }
         
         .text {
@@ -77,24 +135,41 @@
             padding: 20px;
             border-radius: 25px;
             z-index: 100;
+            @media only screen and (max-device-width: 800px) {
+                font-size: 4vw;
+                width: 50%;
+            }
         }
         
         .mat-toolbar h2 {
             font-size: 20px;
+            @media only screen and (max-device-width: 800px) {
+                font-size: 3vw;
+            }
         }
         
         .mat-button {
             font-size: 16px;
+            @media only screen and (max-device-width: 800px) {
+                font-size: 3vw;
+            }
         }
         
         .mat-toolbar-row {
-            background-image: linear-gradient(to right, rgba(126, 172, 219, 255), rgba(114, 159, 209, 255), rgba(114, 159, 209, 255));
             color: white;
             position: fixed;
             /* For macOS/iOS Safari */
             top: 0;
             /* Sets the sticky toolbar to be on top */
             z-index: 1000;
+            width: 100%;
+            @media only screen and (max-device-width: 800px) {
+                max-width: 800px;
+            }
+        }
+        
+        .toolbar-general {
+            background-image: linear-gradient(to right, rgba(126, 172, 219, 255), rgba(114, 159, 209, 255), rgba(114, 159, 209, 255));
         }
         
         .row {
@@ -157,8 +232,8 @@
             position: absolute;
             top: 0;
             left: 50%;
-            width: 24px;
-            height: 24px;
+            width: 5%;
+            height: 5%;
             margin-left: -12px;
             border-left: 1px solid #fff;
             border-bottom: 1px solid #fff;
@@ -178,14 +253,8 @@
             height: 60px;
             width: 80px;
             margin: 0px 0 0 -40px;
-            line-height: 60px;
             position: absolute;
             left: 50%;
             bottom: 0px;
-            color: #FFF;
-            text-align: center;
-            font-size: 70px;
             z-index: 100;
-            text-decoration: none;
-            text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4);
         }
