@@ -1,4 +1,4 @@
-<h1 style="text-align: center;margin:auto;">Color Compression</h1>
+<h1 style="text-align: center;margin:auto;padding-top: 20px;font-weight: 700;">Color Compression</h1>
 
 <mat-card>
     <mat-grid-list cols="5" rowHeight="100px">
@@ -93,16 +93,17 @@
 </mat-card>
 <mat-divider></mat-divider>
 <mat-card style="text-align: center;">
-    <mat-card-header style="display: inline-block;">
+    <mat-card-header style="display: inline-block;margin: 10px;">
         <mat-card-title>ANALYSIS</mat-card-title>
     </mat-card-header>
-    <mat-card-content style="margin: auto 10%;font-size: 18px;text-align: left;">
+    <mat-card-content style="margin: auto 10%;font-size: 18px;text-align: left;padding-bottom: 50px;">
         <p>
             The color compression above is performed using k means clustering. This means that the pixels are grouped into k color (RGB) clusters based on the pixel's distance from the cluster center.
         </p>
         <p>
-            You get to select the k value for the number of clusters that will be used using the slider. The initial k cluster centers are randomly selected pixels in the given image. Then, the iterative loop begins. Each pixel is added to a color cluster based on
-            which cluster center it is closest to. Once all th pixels are grouped, the new cluster centers are cacluated. This will continue until the cluster centers are no longer changing. Essentially, the pixels are not changing clusters anymore.
+            Using the slider, you get to select the k value for the number of clusters that will be used. The initial k cluster centers are randomly selected pixels in the original image. Then, the iterative loop begins. Each pixel is added to a color cluster based
+            on which cluster center it is closest to using Euclidean distance. Once all the pixels are grouped, the new cluster centers are cacluated. This will continue until the cluster centers are no longer changing. Essentially, the pixels are not
+            changing clusters anymore.
         </p>
         <p>
             Finally, all the pixels are assigned the RGB value from its cluster center, the image is reshaped, and you now get an image with k colors.
