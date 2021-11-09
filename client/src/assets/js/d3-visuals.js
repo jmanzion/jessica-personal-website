@@ -138,7 +138,7 @@ function run_choropleth() {
 
         svg.append("g")
             .attr("id", "legend")
-            .attr("transform", "translate(" + (width / 2 + margin.right + margin.left) + ",20)");
+            .attr("transform", "translate(" + (width / 2 + margin.right + margin.left + 50) + ",20)");
 
         var legend = d3.legendColor()
             .labelFormat(d3.format(".2f"))
@@ -320,7 +320,7 @@ function run_node() {
 
 function run_line() {
     //setup dimensions
-    var height = window.innerHeight,
+    var height = window.innerHeight - 100,
         width = window.innerWidth,
         margin = {
             top: 50,
